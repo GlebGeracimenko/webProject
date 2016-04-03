@@ -2,7 +2,7 @@ package com.vlad.dao;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
-import com.vlad.dao.object.DBDifferent;
+import com.vlad.model.DBDifferent;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

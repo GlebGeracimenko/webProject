@@ -9,7 +9,7 @@
         </description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-        <class>com.vlad.dao.object.DBDifferent</class>
+        <class>com.vlad.model.DBDifferent</class>
 
         <validation-mode>NONE</validation-mode>
 

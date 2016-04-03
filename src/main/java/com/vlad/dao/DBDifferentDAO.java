@@ -1,6 +1,6 @@
 package com.vlad.dao;
 
-import com.vlad.dao.object.DBDifferent;
+import com.vlad.model.DBDifferent;
 
 /**
  * Created by gleb on 03.04.16.

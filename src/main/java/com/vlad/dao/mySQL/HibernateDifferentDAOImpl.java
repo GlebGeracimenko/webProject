@@ -1,7 +1,7 @@
 package com.vlad.dao.mySQL;
 
 import com.vlad.dao.DBDifferentDAO;
-import com.vlad.dao.object.DBDifferent;
+import com.vlad.model.DBDifferent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
