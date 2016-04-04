@@ -10,34 +10,37 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by gleb on 03.04.16.
  */
 @Controller
-@RequestMapping("/allItems")
+@RequestMapping("")
 public class DifferentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showItems() {
-        ModelAndView view = new ModelAndView("allItems");
-        List<String> list = new ArrayList<>();
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        list.add(UUID.randomUUID().toString());
-        view.addObject("allItems", list);
+        Consultant consultant = new Consultant();
+        ModelAndView view = new ModelAndView("consultant");
+        view.addObject("consultant", consultant);
+        List<String> allItems = new ArrayList<>();
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        allItems.add(UUID.randomUUID().toString());
+        view.addObject("allItems", allItems);
         return view;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitForm(Model model, List<String> list) {
-        model.addAttribute("allItems", list);
+    public String submitForm(Model model, Consultant consultant) {
+        model.addAttribute("consultant", consultant);
         return "itemsResult";
     }
 

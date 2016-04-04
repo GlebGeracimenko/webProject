@@ -12,8 +12,8 @@
         <tr>
             <td>List result: </td>
             <td>
-                <c:forEach var="list" items="${allItems}">
-                    ${allItems} <br/>
+                <c:forEach var="list" items="${consultant.differentList}">
+                    ${list} <br/>
                 </c:forEach>
             </td>
         </tr>
