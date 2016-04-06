@@ -7,10 +7,11 @@
 </head>
 <body>
 <h2>All items</h2>
-<form:form method="POST" commandName="itemsRepoList">
+<form:form method="post" commandName="itemsRepo">
   <table>
 
       <td><form:label path="differentList">All items: </form:label></td>
+      <%--<td><form:checkboxes path="differentList" items="${allItems}"/></td>--%>
       <td>
           <c:forEach var="list" items="${allItems}">
               <form:checkbox path="differentList" value="${list}" label="${list.name}" /> <br/>

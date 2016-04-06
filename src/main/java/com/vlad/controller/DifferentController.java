@@ -6,6 +6,7 @@ import com.vlad.model.ItemsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,16 +27,16 @@ public class DifferentController {
     public ModelAndView showItems() {
         ItemsRepo itemsRepo = new ItemsRepo();
         ModelAndView view = new ModelAndView("itemsRepo");
-        view.addObject("itemsRepo",itemsRepo);
+        view.addObject("itemsRepo", itemsRepo);
         List<DBDifferent> allItems = differentDAO.getAll();
         view.addObject("allItems", allItems);
         return view;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitForm(Model model, ItemsRepo itemsRepo) {
-        model.addAttribute("itemsRepoList", itemsRepo.getDifferentList());
-        System.out.println(itemsRepo.getDifferentList().get(0));
+    public String submitForm(Model model, ItemsRepo itemsRepo, BindingResult result) {
+        model.addAttribute("itemsRepo", itemsRepo);
+        //System.out.println(itemsRepo.getDifferentList().get(0));
         return "itemsResult";
     }
 

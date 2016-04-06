@@ -1,10 +1,13 @@
 package com.vlad.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /**
  * Created by gleb on 03.04.16.
  */
+@Component
 @Entity
 @Table(name = "different")
 public class DBDifferent {

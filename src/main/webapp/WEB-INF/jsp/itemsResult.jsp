@@ -12,7 +12,7 @@
         <tr>
             <td>List result: </td>
             <td>
-                <c:forEach var="list" items="${itemsRepoList}">
+                <c:forEach var="list" items="${itemsRepo.differentList}">
                     ${list} <br/>
                 </c:forEach>
             </td>
