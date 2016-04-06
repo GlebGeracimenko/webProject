@@ -12,7 +12,7 @@
         <tr>
             <td>List result: </td>
             <td>
-                <c:forEach var="list" items="${consultant.differentList}">
+                <c:forEach var="list" items="${itemsRepoList}">
                     ${list} <br/>
                 </c:forEach>
             </td>

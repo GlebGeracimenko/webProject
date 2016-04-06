@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import java.util.List;
 
 /**
  * Created by gleb on 03.04.16.
@@ -48,5 +49,12 @@ public class HibernateDifferentDAOImpl implements DBDifferentDAO {
         DBDifferent dbDifferent = manager.find(DBDifferent.class, id);
         transaction.commit();
         return dbDifferent;
+    }
+
+    @Override
+    public List<DBDifferent> getAll() {
+        List<DBDifferent> list = factory.createEntityManager().createQuery("FROM DBDifferent")
+                .getResultList();
+        return list;
     }
 }

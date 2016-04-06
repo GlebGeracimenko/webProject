@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -35,6 +36,10 @@ public class HibernateDifferentDAOImplTest {
         differentDAO.delete(different.getId());
         DBDifferent different2 = differentDAO.get(different.getId());
         Assert.assertNull(different2);
+
+        List<DBDifferent> list = differentDAO.getAll();
+        Assert.assertEquals(5, list.size());
+
     }
 
 }

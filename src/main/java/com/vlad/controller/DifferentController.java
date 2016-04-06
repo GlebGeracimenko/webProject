@@ -1,17 +1,16 @@
 package com.vlad.controller;
 
-import com.vlad.model.Consultant;
+import com.vlad.dao.DBDifferentDAO;
+import com.vlad.model.DBDifferent;
+import com.vlad.model.ItemsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by gleb on 03.04.16.
@@ -20,27 +19,23 @@ import java.util.UUID;
 @RequestMapping("")
 public class DifferentController {
 
+    @Autowired
+    private DBDifferentDAO differentDAO;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showItems() {
-        Consultant consultant = new Consultant();
-        ModelAndView view = new ModelAndView("consultant");
-        view.addObject("consultant", consultant);
-        List<String> allItems = new ArrayList<>();
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
-        allItems.add(UUID.randomUUID().toString());
+        ItemsRepo itemsRepo = new ItemsRepo();
+        ModelAndView view = new ModelAndView("itemsRepo");
+        view.addObject("itemsRepo",itemsRepo);
+        List<DBDifferent> allItems = differentDAO.getAll();
         view.addObject("allItems", allItems);
         return view;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitForm(Model model, Consultant consultant) {
-        model.addAttribute("consultant", consultant);
+    public String submitForm(Model model, ItemsRepo itemsRepo) {
+        model.addAttribute("itemsRepoList", itemsRepo.getDifferentList());
+        System.out.println(itemsRepo.getDifferentList().get(0));
         return "itemsResult";
     }
 
